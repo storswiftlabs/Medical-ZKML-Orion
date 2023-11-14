@@ -128,8 +128,9 @@ def getAttributeList(attr, attr_type):
         return attr.strings
 
 DataSet = ["Acute_Inflammations", "Breast_Cancer", "Chronic_Kidney_Disease", "Heart_Disease", "Heart_Failure_Clinical_Records", "Lymphography", "Parkinsons"]
+
 for data in DataSet:
-    model = loadOnnxModel(f'{data}/{data}.onnx')
+    model = loadOnnxModel(f'model/decision_tree/{data}/{data}.onnx')
     Node,input_name,output_name = getNodeAndIOname("TreeEnsembleClassifier", model)
     params = Params()
     for attr in Node.attribute:
@@ -137,5 +138,5 @@ for data in DataSet:
         attributeList = getAttributeList(attr, attr_type)
         params.DataStore(attr.name, attributeList)
 
-    with open(f"{data}/params.txt", 'w') as file:
+    with open(f"model/decision_tree/{data}/params.txt", 'w') as file:
         file.write(params.Output())
