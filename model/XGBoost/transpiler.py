@@ -129,13 +129,14 @@ def getAttributeList(attr, attr_type):
 
 DataSet = ["Acute_Inflammations", "Breast_Cancer", "Chronic_Kidney_Disease", "Heart_Disease", "Heart_Failure_Clinical_Records", "Lymphography", "Parkinsons"]
 for data in DataSet:
-    model = loadOnnxModel(f'{data}/{data}.onnx')
-    Node,input_name,output_name = getNodeAndIOname("TreeEnsembleClassifier", model)
-    params = Params()
-    for attr in Node.attribute:
-        attr_type = str.lower(match_type(attr.type))
-        attributeList = getAttributeList(attr, attr_type)
-        params.DataStore(attr.name, attributeList)
+    if data == "Acute_Inflammations":
+        model = loadOnnxModel(f'model/XGBoost/{data}/{data}.onnx')
+        Node, input_name, output_name = getNodeAndIOname("TreeEnsembleClassifier", model)
+        params = Params()
+        for attr in Node.attribute:
+            attr_type = str.lower(match_type(attr.type))
+            attributeList = getAttributeList(attr, attr_type)
+            params.DataStore(attr.name, attributeList)
 
-    with open(f"{data}/params.txt", 'w') as file:
-        file.write(params.Output())
+        with open(f"model/XGBoost/{data}/params.txt", 'w') as file:
+            file.write(params.Output())

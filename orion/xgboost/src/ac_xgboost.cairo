@@ -6,9 +6,7 @@ use orion::operators::ml::tree_ensemble::core::{NODE_MODES, TreeEnsembleAttribut
 use orion::operators::ml::tree_ensemble::tree_ensemble_classifier::{TreeEnsembleClassifier, POST_TRANSFORM, TreeEnsembleClassifierTrait};
 use orion::operators::matrix::{MutMatrix, MutMatrixImpl};
 
-#[test]
-#[available_gas(99999999999999999)]
-fn xgboost_test() -> Span<u32> {
+fn main() ->  Span<usize> {
     let X = input();
     let class_ids: Span<usize> = array![0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3].span();
     let class_nodeids: Span<usize> = array![2, 3, 4, 2, 3, 4, 1, 3, 5, 7, 8, 1, 3, 4, 2, 3, 4, 2, 3, 4, 1, 3, 5, 7, 8, 1, 3, 4, 2, 3, 4, 2, 3, 4, 1, 3, 5, 7, 8, 1, 3, 4, 2, 3, 4, 2, 3, 4, 1, 3, 5, 7, 8, 1, 3, 4, 2, 3, 4, 2, 3, 4, 1, 3, 5, 7, 8, 1, 3, 4, 2, 3, 4, 2, 3, 4, 1, 3, 5, 7, 8, 1, 3, 4, 2, 3, 4, 2, 3, 4, 1, 3, 4, 1, 3, 4, 2, 3, 4, 2, 3, 4, 1, 3, 4, 1, 3, 4, 2, 3, 4, 2, 3, 4, 1, 3, 5, 7, 8, 1, 3, 4, 2, 3, 4, 2, 3, 4, 1, 3, 5, 7, 8, 1, 4, 5, 6].span();
@@ -331,7 +329,8 @@ let mut node_index: Felt252Dict<usize> = Default::default();
     };
 
     let (labels, mut scores) = TreeEnsembleClassifierTrait::predict(ref classifier, X);
-    //labels.print();
-    //scores.print();
+    // labels.print();
+    // scores.print();
     labels
+
 }
