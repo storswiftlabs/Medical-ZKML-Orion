@@ -1,2 +1,2 @@
-mod ac_xgboost;
+mod main;
 mod inputs;
