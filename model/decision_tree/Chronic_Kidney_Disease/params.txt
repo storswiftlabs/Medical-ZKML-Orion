@@ -1,0 +1,18 @@
+params = {
+    "class_ids": [0, 0, 0],
+    "class_nodeids": [2, 3, 4],
+    "class_treeids": [0, 0, 0],
+    "class_weights": [1.0, 0.0, 1.0],
+    "classlabels": [0, 1],
+    "nodes_falsenodeids": [4, 3, 0, 0, 0],
+    "nodes_featureids": [3, 17, 0, 0, 0],
+    "nodes_hitrates": [],
+    "nodes_missing_value_tracks_true": [0, 0, 0, 0, 0],
+    "nodes_modes": ['BRANCH_LEQ', 'BRANCH_LEQ', 'LEAF', 'LEAF', 'LEAF'],
+    "nodes_nodeids": [0, 1, 2, 3, 4],
+    "nodes_treeids": [0, 0, 0, 0, 0],
+    "nodes_truenodeids": [1, 2, 0, 0, 0],
+    "nodes_values": [0.125, 0.3220338821411133, 0.0, 0.0, 0.0],
+    "base_values": [1.0, 1.0, 1.0, 1.0, 1.0],
+    "post_transform": "SOFTMAX",
+}

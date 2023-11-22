@@ -1,0 +1,18 @@
+params = {
+    "class_ids": [0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3],
+    "class_nodeids": [2, 2, 2, 2, 3, 3, 3, 3, 5, 5, 5, 5, 7, 7, 7, 7, 9, 9, 9, 9, 10, 10, 10, 10],
+    "class_treeids": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    "class_weights": [0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+    "classlabels": [0, 1, 2, 3],
+    "nodes_falsenodeids": [4, 3, 0, 0, 6, 0, 8, 0, 10, 0, 0],
+    "nodes_featureids": [2, 0, 0, 0, 0, 0, 4, 0, 3, 0, 0],
+    "nodes_hitrates": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+    "nodes_missing_value_tracks_true": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    "nodes_modes": ['BRANCH_LEQ', 'BRANCH_LEQ', 'LEAF', 'LEAF', 'BRANCH_LEQ', 'LEAF', 'BRANCH_LEQ', 'LEAF', 'BRANCH_LEQ', 'LEAF', 'LEAF'],
+    "nodes_nodeids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "nodes_treeids": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    "nodes_truenodeids": [1, 2, 0, 0, 5, 0, 7, 0, 9, 0, 0],
+    "nodes_values": [0.5, 0.574999988079071, 0.0, 0.0, 0.40833333134651184, 0.0, 0.5, 0.0, 0.5, 0.0, 0.0],
+    "base_values": [],
+    "post_transform": "SOFTMAX",
+}

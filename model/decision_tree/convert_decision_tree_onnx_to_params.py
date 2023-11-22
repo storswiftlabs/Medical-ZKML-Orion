@@ -38,7 +38,7 @@ class Params:
         if name == "nodes_featureids":
             self.nodes_featureids = data
         if name == "nodes_hitrates":
-            self.base_values = data
+            self.nodes_hitrates = data
         if name == "nodes_missing_value_tracks_true":
             self.nodes_missing_value_tracks_true = data
         if name == "nodes_modes":
@@ -130,13 +130,13 @@ def getAttributeList(attr, attr_type):
 DataSet = ["Acute_Inflammations", "Breast_Cancer", "Chronic_Kidney_Disease", "Heart_Disease", "Heart_Failure_Clinical_Records", "Lymphography", "Parkinsons"]
 
 for data in DataSet:
-    model = loadOnnxModel(f'model/decision_tree/{data}/{data}.onnx')
-    Node,input_name,output_name = getNodeAndIOname("TreeEnsembleClassifier", model)
-    params = Params()
-    for attr in Node.attribute:
-        attr_type = str.lower(match_type(attr.type))
-        attributeList = getAttributeList(attr, attr_type)
-        params.DataStore(attr.name, attributeList)
-
-    with open(f"model/decision_tree/{data}/params.txt", 'w') as file:
-        file.write(params.Output())
+    if data=="Acute_Inflammations":
+        model = loadOnnxModel(f'model/decision_tree/{data}/{data}.onnx')
+        Node,input_name,output_name = getNodeAndIOname("TreeEnsembleClassifier", model)
+        params = Params()
+        for attr in Node.attribute:
+            attr_type = str.lower(match_type(attr.type))
+            attributeList = getAttributeList(attr, attr_type)
+            params.DataStore(attr.name, attributeList)
+        with open(f"model/decision_tree/{data}/params.txt", 'w') as file:
+            file.write(params.Output())
