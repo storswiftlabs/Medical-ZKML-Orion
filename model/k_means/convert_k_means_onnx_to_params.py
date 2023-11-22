@@ -38,7 +38,7 @@ class Params:
         if name == "nodes_featureids":
             self.nodes_featureids = data
         if name == "nodes_hitrates":
-            self.base_values = data
+            self.nodes_hitrates = data
         if name == "nodes_missing_value_tracks_true":
             self.nodes_missing_value_tracks_true = data
         if name == "nodes_modes":
@@ -58,7 +58,7 @@ class Params:
         if name == "base_values":
             self.base_values = data
         if name == "post_transform":
-            self.post_transform = data[2:-1].decode('utf-8').replace("'", "\"")
+            self.post_transform = str(data)[2:-1]
 
     def Output(self):
         return f"""params = {"{"}

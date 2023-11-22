@@ -20,7 +20,7 @@ class Params:
         self.nodes_truenodeids = []
         self.nodes_values = []
         self.base_values =  []
-        self.post_transform =  "SOFTMAX"
+        self.post_transform =  ""
 
     def DataStore(self, name, data):
         if name == "class_ids":
@@ -58,7 +58,7 @@ class Params:
         if name == "base_values":
             self.base_values = data
         if name == "post_transform":
-            self.post_transform = data[2:-1].decode('utf-8').replace("'", "\"")
+            self.post_transform = str(data)[2:-1]
 
     def Output(self):
         return f"""params = {"{"}
@@ -77,7 +77,7 @@ class Params:
     "nodes_truenodeids": {self.nodes_truenodeids},
     "nodes_values": {self.nodes_values},
     "base_values": {self.base_values},
-    "post_transform": "SOFTMAX",
+    "post_transform": {self.post_transform},
 {"}"}"""
 
 def match_type(index):
@@ -130,13 +130,12 @@ def getAttributeList(attr, attr_type):
 DataSet = ["Acute_Inflammations", "Breast_Cancer", "Chronic_Kidney_Disease", "Heart_Disease", "Heart_Failure_Clinical_Records", "Lymphography", "Parkinsons"]
 
 for data in DataSet:
-    if data=="Acute_Inflammations":
-        model = loadOnnxModel(f'model/decision_tree/{data}/{data}.onnx')
-        Node,input_name,output_name = getNodeAndIOname("TreeEnsembleClassifier", model)
-        params = Params()
-        for attr in Node.attribute:
-            attr_type = str.lower(match_type(attr.type))
-            attributeList = getAttributeList(attr, attr_type)
-            params.DataStore(attr.name, attributeList)
-        with open(f"model/decision_tree/{data}/params.txt", 'w') as file:
-            file.write(params.Output())
+    model = loadOnnxModel(f'model/decision_tree/{data}/{data}.onnx')
+    Node,input_name,output_name = getNodeAndIOname("TreeEnsembleClassifier", model)
+    params = Params()
+    for attr in Node.attribute:
+        attr_type = str.lower(match_type(attr.type))
+        attributeList = getAttributeList(attr, attr_type)
+        params.DataStore(attr.name, attributeList)
+    with open(f"model/decision_tree/{data}/params.txt", 'w') as file:
+        file.write(params.Output())
