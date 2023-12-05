@@ -1,3 +1,4 @@
+use core::array::SpanTrait;
 use decision_tree_ac::input::input;
 use debug::PrintTrait;
 use orion::numbers::{FixedTrait, FP16x16};
@@ -71,6 +72,9 @@ let mut node_index: Felt252Dict<usize> = Default::default();
     
     // ASSERT LABELS
     // labels.len().print();
+    let mut arr: Span<usize> = labels;
+    let a: usize = *arr.pop_front().unwrap();
+    a.print();
     // assert(*labels[0] == 0, 'labels[0]');
     // assert(labels.len() == 1, 'len(labels)');
 
