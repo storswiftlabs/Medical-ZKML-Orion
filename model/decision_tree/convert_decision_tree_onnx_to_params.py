@@ -20,7 +20,7 @@ class Params:
         self.nodes_truenodeids = []
         self.nodes_values = []
         self.base_values =  []
-        self.post_transform =  ""
+        self.post_transform =  "\'SOFTMAX\'"
 
     def DataStore(self, name, data):
         if name == "class_ids":
@@ -57,8 +57,8 @@ class Params:
             self.nodes_values = data
         if name == "base_values":
             self.base_values = data
-        if name == "post_transform":
-            self.post_transform = str(data)[2:-1]
+        # if name == "post_transform":
+        #     self.post_transform = str(data)[2:-1]
 
     def Output(self):
         return f"""params = {"{"}
